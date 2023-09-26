@@ -1,0 +1,93 @@
+<mvc:View
+    controllerName="ejintegrador2.controller.List"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+>
+    <f:DynamicPage
+        id="dynamicPageId"
+        toggleHeaderOnTitleClick="false"
+    >
+        <f:title>
+            <f:DynamicPageTitle>
+                <f:heading>
+                    <Title text="{i18n>title}" />
+                </f:heading>
+            </f:DynamicPageTitle>
+        </f:title>
+        <f:content>
+            <VBox fitContainer="true">
+                <OverflowToolbar class="sapFDynamicPageAlignContent">
+                    <ToolbarSpacer />
+                    <SearchField
+                        placeholder="{i18n>ord-EmployeeID}"
+                        search="onSearch"
+                        width="17.5rem"
+                    />
+                </OverflowToolbar>
+                <Table
+                    id="idOrdersTable"
+                    inset="false"
+                    items="{
+					path: 'ordersModel>/',
+				sorter: {path: 'CustomerID'}
+				}"
+                    width="auto"
+                >
+                    <columns>
+                        <Column width="12em">
+                            <Text text="{i18n>tab-CustomerID}" />
+                        </Column>
+                        <Column width="12em">
+                            <Text text="{i18n>tab-EmployeeID}" />
+                        </Column>
+                        <Column width="12em">
+                            <Text text="{i18n>tab-ShipCity}" />
+                        </Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem
+                            type="Active"
+                            press="onItemPress"
+                            vAlign="Middle"
+                        >
+                            <cells>
+                                <ObjectIdentifier
+                                    title="{ordersModel>CustomerID}"
+                                    text="{ordersModel>CustomerID}"
+                                />
+                            </cells>
+                            <cells>
+                                <ObjectIdentifier
+                                    title="{ordersModel>EmployeeID}"
+                                    text="{path: 'ordersModel>EmployeeID'}"
+                                />
+                            </cells>
+                            <cells>
+                                <ObjectIdentifier
+                                    title="{ordersModel>ShipCity}"
+                                    text="{ordersModel>ShipCity}"
+                                />
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </VBox>
+        </f:content>
+        <f:footer>
+            <OverflowToolbar>
+                <ToolbarSpacer />
+                <Button
+                    type="Accept"
+                    text="Accept"
+                />
+                <Button
+                    type="Reject"
+                    text="Reject"
+                />
+            </OverflowToolbar>
+        </f:footer>
+    </f:DynamicPage>
+</mvc:View>

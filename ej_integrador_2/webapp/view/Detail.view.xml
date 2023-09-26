@@ -1,0 +1,61 @@
+<mvc:View controllerName="ejintegrador2.controller.Detail"
+    xmlns:uxap="sap.uxap"
+    xmlns:fa="sap.ui.layout.form"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+
+    <uxap:ObjectPageLayout
+        id="ObjectPageLayout"
+        showTitleInHeaderContent="true"
+        alwaysShowContentHeader="false"
+        preserveHeaderStateOnScroll="false"
+        headerContentPinnable="true"
+        isChildPage="true"
+        upperCaseAnchorBar="false">
+
+        <uxap:headerTitle>
+            <uxap:ObjectPageDynamicHeaderTitle>
+                <uxap:navigationActions>
+                    <OverflowToolbarButton type="Transparent" icon="sap-icon://decline" press="onPressClose"/>
+                </uxap:navigationActions>
+            </uxap:ObjectPageDynamicHeaderTitle>
+        </uxap:headerTitle>
+        <uxap:sections>
+            <uxap:ObjectPageSection title="{selectedOrderModel>/CustomerID}">
+                <uxap:subSections>
+                    <uxap:ObjectPageSubSection>
+                        <uxap:blocks>
+                            <fa:SimpleForm
+                                id="SimpleFormDisplay354"
+                                editable="false"
+                                layout="ResponsiveGridLayout"
+                                labelSpanXL="3"
+                                labelSpanL="3"
+                                labelSpanM="3"
+                                labelSpanS="12"
+                                adjustLabelSpan="false"
+                                emptySpanXL="4"
+                                emptySpanL="4"
+                                emptySpanM="4"
+                                emptySpanS="0"
+                                columnsXL="1"
+                                columnsL="1"
+                                columnsM="1"
+                                singleContainerFullSize="false">
+                                <fa:content>
+                                    <Label text="{i18n>ord-CustomerID}" />
+                                    <Text id="nameText" text="{selectedOrderModel>/CustomerID}" />
+                                    <Label text="{i18n>ord-EmployeeID}" />
+                                    <Text text="{selectedOrderModel>/EmployeeID}" />
+                                    <Label text="{i18n>ord-ShipCity}" />
+                                    <Text text="{selectedOrderModel>/ShipCity}" />
+                                </fa:content>
+                            </fa:SimpleForm>
+                        </uxap:blocks>
+                    </uxap:ObjectPageSubSection>
+                </uxap:subSections>
+            </uxap:ObjectPageSection>
+        </uxap:sections>
+    </uxap:ObjectPageLayout>
+</mvc:View>

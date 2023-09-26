@@ -1,0 +1,57 @@
+_schema-version: "3.2"
+ID: EjercicioIntegrador2
+version: 0.0.1
+modules:
+- name: EjercicioIntegrador2-destination-content
+  type: com.sap.application.content
+  requires:
+  - name: EjercicioIntegrador2-destination-service
+    parameters:
+      content-target: true
+  - name: EjercicioIntegrador2_html_repo_host
+    parameters:
+      service-key:
+        name: EjercicioIntegrador2_html_repo_host-key
+  - name: uaa_EjercicioIntegrador2
+    parameters:
+      service-key:
+        name: uaa_EjercicioIntegrador2-key
+  parameters:
+    content:
+      instance:
+        destinations:
+        - Name: router_EjercicioIntegrador2_html_repo_host
+          ServiceInstanceName: EjercicioIntegrador2-html5-app-host-service
+          ServiceKeyName: EjercicioIntegrador2_html_repo_host-key
+          sap.cloud.service: router
+        - Authentication: OAuth2UserTokenExchange
+          Name: router_uaa_EjercicioIntegrador2
+          ServiceInstanceName: EjercicioIntegrador2-xsuaa-service
+          ServiceKeyName: uaa_EjercicioIntegrador2-key
+          sap.cloud.service: router
+        existing_destinations_policy: ignore
+  build-parameters:
+    no-source: true
+resources:
+- name: EjercicioIntegrador2-destination-service
+  type: org.cloudfoundry.managed-service
+  parameters:
+    config:
+      HTML5Runtime_enabled: true
+      version: 1.0.0
+    service: destination
+    service-name: EjercicioIntegrador2-destination-service
+    service-plan: lite
+- name: EjercicioIntegrador2_html_repo_host
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-name: EjercicioIntegrador2-html5-app-host-service
+    service-plan: app-host
+- name: uaa_EjercicioIntegrador2
+  type: org.cloudfoundry.managed-service
+  parameters:
+    path: ./xs-security.json
+    service: xsuaa
+    service-name: EjercicioIntegrador2-xsuaa-service
+    service-plan: application
