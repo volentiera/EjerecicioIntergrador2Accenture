@@ -27,17 +27,20 @@ sap.ui.define([
             
         },
         onSearch: function(oEvent){
-          let oTableSearchState = [],
+          let aTableSearchState = [],
           sQuery = oEvent.getParameter(Constants.parameters.query);
-          console.log(sQuery)
   
         if (sQuery && sQuery.length > 0) {
-          let employeeIDFiltered = new Filter(Constants.filters.EmployeeID, FilterOperator.EQ, sQuery);
-          oTableSearchState.push(employeeIDFiltered);
+          let oEmployeeIDFiltered = new Filter(Constants.filters.EmployeeID, FilterOperator.EQ, sQuery);
+          let oShipCityFiltered = new Filter(Constants.filters.ShipCity, FilterOperator.Contains, sQuery);
+          aTableSearchState.push(new Filter({
+            filters: [oEmployeeIDFiltered, oShipCityFiltered],
+            and: false
+          }));
         }
         let oComboBox = this.byId(Constants.ids.idOrdersTable);
         let oBinding = oComboBox.getBinding(Constants.binding.items);
-        oBinding.filter(oTableSearchState, Constants.binding.application);
+        oBinding.filter(aTableSearchState, Constants.binding.application);
       },
       });
   });

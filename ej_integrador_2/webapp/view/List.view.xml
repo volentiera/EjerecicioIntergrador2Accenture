@@ -22,7 +22,6 @@
                 <OverflowToolbar class="sapFDynamicPageAlignContent">
                     <ToolbarSpacer />
                     <SearchField
-                        placeholder="{i18n>ord-EmployeeID}"
                         search="onSearch"
                         width="17.5rem"
                     />
@@ -76,18 +75,5 @@
                 </Table>
             </VBox>
         </f:content>
-        <f:footer>
-            <OverflowToolbar>
-                <ToolbarSpacer />
-                <Button
-                    type="Accept"
-                    text="Accept"
-                />
-                <Button
-                    type="Reject"
-                    text="Reject"
-                />
-            </OverflowToolbar>
-        </f:footer>
     </f:DynamicPage>
 </mvc:View>

@@ -9,7 +9,8 @@ sap.ui.define([], function (){
             appView: "appView"
         },
         routes:{
-            RouteDetail: "RouteDetail"
+            RouteDetail: "RouteDetail",
+            RouteList: "RouteList"
         },
         namespace:{
             app: "ejintegrador2"

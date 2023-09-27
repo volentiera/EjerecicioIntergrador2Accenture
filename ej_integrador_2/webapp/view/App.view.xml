@@ -6,7 +6,6 @@
     	<f:FlexibleColumnLayout
 		autoFocus="false"
 		id="layout"
-		stateChange="onStateChanged"
 		restoreFocusOnBackNavigation="true"
 		layout="{appView>/layout}"
 		backgroundDesign="Translucent"/>
